@@ -1,0 +1,479 @@
+APIs list of the Project Rypls 
+
+URL:  http://rlyps.curiologix.com/public/
+Images URL: http://rlyps.curiologix.com/public/images/[image_name]
+-----------------
+
+##################################################
+##################################################
+
+**Login User**
+String FinalUrl = URL + "user/login"
+-----------------------------------------
+Post Parm{
+	
+	string email_address,
+	string password,
+        string device_id,
+
+}
+-----------------
+
+##################################################
+##################################################
+
+**User Registration**
+String FinalUrl = URL + "api/user" (post url) 
+-----------------------------------------
+Post Parm{
+        // All Fields are required 
+
+	string first_name,
+	string last_name,
+	string phone_number,
+        string email_address,
+        string password,
+        string password_confirmation,
+        string user_type
+        
+}
+-----------------
+Options for user_type ( This time only option 1 and 2 will work for registration time).
+
+1- user
+2- venue_owner
+3- staff
+4- admin
+
+
+##################################################
+##################################################
+
+**User profile updation url**
+String FinalUrl = URL + "api/user/update/id" (post url) // User will be updated against their ids 
+
+Post Parm{
+         
+	string first_name,
+	string last_name,
+	string phone_number,
+        
+}
+##################################################
+##################################################
+-----------------------------------------
+**Recover password url**
+String FinalUrl = URL + "api/user/recoverpassword" (post url)
+Post Parm{
+         
+	string email_address,
+        
+}
+
+**Venue Registration**
+String FinalUrl = URL + "api/venue" (post url) 
+-----------------------------------------
+
+Post Parm{
+
+        // All fields are required 
+
+	string venue_name,
+	string venue_address,
+        string description,
+	string city,
+        string state,
+        string postal_code,
+        string venue_phone,
+        string venue_website,
+        string venue_email,
+        string time_from,
+        string time_to,
+        string days_closed,
+        string special_note,
+        string user_id,
+        string photo,
+        string longitude,
+        string latitude,
+       
+        
+}
+-----------------
+##################################################
+##################################################
+
+**Venues Lists**
+
+String FinalUrl = URL + "api/venue/lists/id" (We should get the lists of all users if we entered the user_type = user otherwise we should get the venuw_owner type) 
+Post Parm{
+
+        string latitude,
+	string longitude,
+        string user_radius,
+        
+}
+
+
+##################################################
+##################################################
+-----------------
+// New Entries 
+// Note ( For some reason we are unable to updates the following urls so we need to continue with these url) 
+
+1- String FinalUrl = URL + "api/venue/favourites" (post url) 
+2- String FinalUrl = URL + "api/venue/unfavourites" (post url) 
+3-String FinalUrl = URL + "api/venue/likeunlike" (post url) 
+
+
+
+
+
+**Add to favourites url**
+String FinalUrl = URL + "api/venue/venueFavourites" (post url) 
+Post Parm{
+
+        string user_id,
+	string venue_id,
+        string event_id,
+        string type,      // should be event and venue 
+}
+-----------------
+
+-----------------------------------------
+##################################################
+##################################################
+----------------
+
+**like and Unlike url**
+String FinalUrl = URL + "api/venue/likeunlike" (post url) 
+
+        string user_id,
+	string venue_id,
+        string event_id,
+        string type,    // should be event and venue 
+        string longitude
+        string latitude
+}
+-----------------
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Events list against venue_id**
+String FinalUrl = URL + "api/venue/titles/venue_id" (post url) 
+{
+     post param {
+         string user_id
+     }
+}
+##################################################
+##################################################
+-----------------------------------------
+**Create Events url**
+String FinalUrl = URL + "api/event (post url) 
+Post Parm{
+
+        // All fields are required 
+
+	string user_id,
+	string venue_id,
+        string event_name,
+	string title,
+        string description,
+        string event_type,
+        string dree_code,
+        string music_type,
+        string price,
+        string date_from,
+        string date_to,
+        string time_from,
+        string time_to,
+        string age_restriction,
+        string parking,
+        string phone,
+        string photo,
+        string facebook_url,
+        string twitter_url,
+        string youtube_url,
+        string recurring,
+	string special_note
+        
+}
+-----------------
+##################################################
+##################################################
+-----------------------------------------
+**Events Lists url**  // we should get all the lists of events against user id 
+String FinalUrl = URL + "api/event/lists/id (post url) 
+
+  Post Parm{
+                  string latitude
+                  string longitude
+                  string user_radius 
+}
+-----------------
+##################################################
+##################################################
+-----------------------------------------
+**Events add to favourites url** 
+String FinalUrl = URL + "api/event/eventFavourites (post url) 
+
+   Post Parm{
+                  string user_id
+                  string venue_id
+                  string type      // Should be event or venue 
+                  string event_id 
+}
+##################################################
+##################################################
+-----------------------------------------
+**Events like and un-like url** 
+String FinalUrl = URL + "api/event/eventLikeUnlike (post url) 
+
+Post Parm{
+                  string user_id
+                  string venue_id
+                  string type      // Should be event or venue 
+                  string event_id 
+                  string longitude
+                  string latitude
+}
+##################################################
+##################################################
+-----------------------------------------
+**Create Staff url** 
+String FinalUrl = URL + "api/staff/createStaff (post url) 
+
+Post Parm{
+                  
+                  string staff_name
+                  string email_address
+                  string staff_phone
+                  string created_by
+                 
+                 
+}
+##################################################
+##################################################
+
+**Get Staff list url against venue_owner id** 
+String FinalUrl = URL + "api/staff/lists/id    // (id = venue_owner id)  (post url)
+ 
+##################################################
+##################################################
+-----------------------------------------
+**Assign and remove staff url** 
+String FinalUrl = URL + "api/staff/assignStaff(post url) 
+
+Post Parm{
+                  string staff_name		// staff email id (registion email)
+                  string venue_name		// venue name (sting)
+                  string event_name		// event id not name
+                  string staff_role		// staff role
+
+                  
+}
+##################################################
+##################################################
+-----------------------------------------
+
+**Events lists for staff url** 
+String FinalUrl = URL + "api/staff/getEventLists/user_id   (Staff will see the all events against user_id ) 
+
+Post Parm{
+                  string venue_name
+                 
+                  
+                  
+} 
+-----------------
+##################################################
+##################################################
+-----------------------------------------
+**Venues lists for staff url** 
+String FinalUrl = URL + "api/staff/venueslists/user_id    (Staff will see the all venues against thier ids ) 
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Favoutites lists url for events and venues** 
+String FinalUrl = URL + "getFavouriteLists" 
+Post Parm{
+                  string user_id
+} 
+##################################################
+##################################################
+-----------------------------------------
+**Do UnFavourite in single url of events and venues** 
+String FinalUrl = URL + "getUnFavouriteLists" 
+
+Post Parm{
+                  string user_id
+                  string venue_id
+                  string type      // Should be event or venue 
+                  string event_id 
+}
+##################################################
+##################################################
+-----------------------------------------
+**Staff Availability and Un-availability url** 
+String FinalUrl = URL + "api/staff/availability" 
+
+Post Parm{
+                  string staff_name    // staff_name as staff email id 
+                  string venue_name	// venue name 
+                  string event_name     // event_name as event id   
+		  string availability   // yes | no
+}
+-----------------------------------------
+##################################################
+##################################################
+**Change password url** 
+String FinalUrl = URL + "api/user/changepassword" 
+Post Parm{
+                  string user_id    
+                  string old_password	
+                  string new_password     
+		  string password_confirmation   
+}
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Login with facebook url** 
+String FinalUrl = URL + "api/user/facebooklogin" 
+
+Post Parm{ 
+		  striing  first_name
+                  string  facebook_reference	
+                  string  user_type    
+		   
+}
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Get event count by date (for calander)** 
+String FinalUrl = URL + "api/venue/calendarCount" 
+
+Post Parm{ 
+		  striing  city
+                  string  venue_id	// numeric id not name
+                  string  month_year 	// format: mm/dd/yy (e.g: 12/01/15)
+}
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Get event list by date & venue id** 
+String FinalUrl = URL + "api/venue/eventsByDate" 
+
+Post Parm{ 
+		  string user_id	// numeric id not email id
+                  string  venue_id	// numeric id not name
+                  string  date 		// format: mm/dd/yy (e.g: 12/01/15)
+}
+
+/**
+Note: By user id, we will know weather user has rippled it not otherwise list will 
+be fetched based on venud_id and date */
+-----------------------------------------\
+##################################################
+##################################################
+-----------------------------------------
+**Get event list by date & venue id** 
+String FinalUrl = URL + "api/user/showRewards" 
+
+Post Parm{ 
+		  string user_id	// numeric id not email id
+}
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Invite Friends Url** 
+String FinalUrl = URL + "inviteFriendAward/id"
+----------------- 
+##################################################
+##################################################
+-----------------------------------------
+**Event (likeunlike) url** 
+String FinalUrl = URL + "api/event/likeUnlikeEvent" // This post url will display like value rather than ripple
+
+Post Parm{
+                  string user_id
+                  string venue_id
+                  string type      // Should be event or venue 
+                  string event_id 
+}
+-----------------------------------------
+##################################################
+##################################################
+**Venue (likeunlike) url** 
+String FinalUrl = URL + "api/venue/likeUnlikeVenue" // This post url will display like value rather than ripple
+Post Parm{
+                  string user_id
+                  string venue_id
+                  string type      // Should be event or venue 
+                  string event_id 
+}
+-----------------------------------------
+##################################################
+##################################################
+**Add comments url** 
+String FinalUrl = URL + "api/user/comment" 
+Post Parm{
+                  string user_id
+                  string venue_id     // Here should id one either venue or event if venue_id is 3 event_id will be 0
+                  string event_id 
+                  string comments
+}
+-----------------------------------------
+##################################################
+##################################################
+**Get comments list url** 
+String FinalUrl = URL + "api/user/commentlist" 
+
+Post Parm{
+                  string user_id
+                  string venue_id     // here if venue_id is 3 and event_id will be 0 and vice versa
+                  string event_id 
+}
+-----------------------------------------
+##################################################
+##################################################
+-----------------------------------------
+**Images upload url for venues and events** 
+String FinalUrl = URL + "api/imageupload" 
+
+Post Parm{
+                  string user_id
+                  string venue_id     
+                  string event_id      // if its venues than event_id will be 0 otherwise vice versa 
+                  string type
+                  string images[] 
+}
+##################################################
+##################################################
+-----------------------------------------
+**Get Images list for events and venues**
+String FinalUrl = URL + "api/imageslists" 
+
+Post Parm{
+                  string id
+                  string type     
+                  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+	
